@@ -10,7 +10,7 @@
                 host.ConfigureAppConfiguration((ctx, builder) =>
                 {
                     builder.AddJsonFile("appsettings.json", false, true);
-                    builder.AddJsonFile($"appsettings.{environment}.json, true, true");
+                    builder.AddJsonFile($"appsettings.{environment}.json", true, true);
                     builder.AddJsonFile($"appsettings.{Environment.MachineName}.json", true, true);
 
                     builder.AddEnvironmentVariables();

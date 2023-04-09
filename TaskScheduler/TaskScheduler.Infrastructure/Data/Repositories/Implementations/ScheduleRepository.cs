@@ -6,9 +6,9 @@ namespace TaskScheduler.Infrastructure.Data.Repositories.Implementations
 {
     public class ScheduleRepository : IScheduleRepository
     {
-        private readonly ApplicationContext _context;
+        private readonly DapperContext _context;
 
-        public ScheduleRepository(ApplicationContext context)
+        public ScheduleRepository(DapperContext context)
         {
             _context = context;
         }

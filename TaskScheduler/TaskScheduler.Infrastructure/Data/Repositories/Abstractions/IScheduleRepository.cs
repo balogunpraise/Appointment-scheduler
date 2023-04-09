@@ -10,5 +10,6 @@ namespace TaskScheduler.Infrastructure.Data.Repositories.Abstractions
     public interface IScheduleRepository
     {
         Task<IEnumerable<Appointment>> GetAppointments();
+        //Task CreateAppointment();
     }
 }

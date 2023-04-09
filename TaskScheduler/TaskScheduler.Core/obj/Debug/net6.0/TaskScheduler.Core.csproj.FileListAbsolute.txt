@@ -10,3 +10,5 @@ C:\Users\pbalogun\Desktop\Things to learn\scheduler project\TaskScheduler\TaskSc
 C:\Users\pbalogun\Desktop\Things to learn\scheduler project\TaskScheduler\TaskScheduler.Core\obj\Debug\net6.0\refint\TaskScheduler.Core.dll
 C:\Users\pbalogun\Desktop\Things to learn\scheduler project\TaskScheduler\TaskScheduler.Core\obj\Debug\net6.0\TaskScheduler.Core.pdb
 C:\Users\pbalogun\Desktop\Things to learn\scheduler project\TaskScheduler\TaskScheduler.Core\obj\Debug\net6.0\ref\TaskScheduler.Core.dll
+C:\Users\pbalogun\Desktop\Things to learn\scheduler project\TaskScheduler\TaskScheduler.Core\bin\Debug\net6.0\TaskScheduler.Core.runtimeconfig.json
+C:\Users\pbalogun\Desktop\Things to learn\scheduler project\TaskScheduler\TaskScheduler.Core\obj\Debug\net6.0\TaskScheduler.Core.genruntimeconfig.cache

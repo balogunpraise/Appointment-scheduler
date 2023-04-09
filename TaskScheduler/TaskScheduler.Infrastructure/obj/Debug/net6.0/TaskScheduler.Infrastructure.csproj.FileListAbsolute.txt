@@ -13,3 +13,5 @@ C:\Users\pbalogun\Desktop\Things to learn\scheduler project\TaskScheduler\TaskSc
 C:\Users\pbalogun\Desktop\Things to learn\scheduler project\TaskScheduler\TaskScheduler.Infrastructure\obj\Debug\net6.0\refint\TaskScheduler.Infrastructure.dll
 C:\Users\pbalogun\Desktop\Things to learn\scheduler project\TaskScheduler\TaskScheduler.Infrastructure\obj\Debug\net6.0\TaskScheduler.Infrastructure.pdb
 C:\Users\pbalogun\Desktop\Things to learn\scheduler project\TaskScheduler\TaskScheduler.Infrastructure\obj\Debug\net6.0\ref\TaskScheduler.Infrastructure.dll
+C:\Users\pbalogun\Desktop\Things to learn\scheduler project\TaskScheduler\TaskScheduler.Infrastructure\bin\Debug\net6.0\TaskScheduler.Infrastructure.runtimeconfig.json
+C:\Users\pbalogun\Desktop\Things to learn\scheduler project\TaskScheduler\TaskScheduler.Infrastructure\obj\Debug\net6.0\TaskScheduler.Infrastructure.genruntimeconfig.cache

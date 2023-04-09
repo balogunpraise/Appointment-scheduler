@@ -14,6 +14,7 @@ namespace TaskScheduler.Core.Entities
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public bool IsDepricatied { get; set; }
+        public string ApplicationUserId { get; set; }
         public Appointment Appointment { get; set; }
     }
 }

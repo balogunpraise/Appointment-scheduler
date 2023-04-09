@@ -1,20 +1,15 @@
 ﻿using Microsoft.Extensions.Configuration;
 using MySqlConnector;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TaskScheduler.Infrastructure.Data
 {
-    public class ApplicationContext
+    public class DapperContext
     {
         private readonly IConfiguration _config;
         private readonly string connectionString;
 
-        public ApplicationContext(IConfiguration config)
+        public DapperContext(IConfiguration config)
         {
             _config = config;
             connectionString = _config.GetConnectionString("MySqlConnection");

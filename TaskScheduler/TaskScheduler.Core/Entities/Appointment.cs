@@ -16,6 +16,8 @@ namespace TaskScheduler.Core.Entities
         public bool IsCompleted { get; set; }
         public bool IsDepricatied { get; set; }
         public decimal Price { get; set; }
+        public string ClientId { get; set; }
+        public  string ApplicationUserId { get; set; }
         public Client Client { get; set; }
     }
 }
