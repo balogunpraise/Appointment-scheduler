@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
+using TaskScheduler.Core.Application.Extensions;
 using TaskScheduler.Core.Entities;
 
 namespace TaskScheduler.Core.Application
@@ -7,16 +9,24 @@ namespace TaskScheduler.Core.Application
     public static class Current
     {
         private static IHttpContextAccessor _httpContextAccessor;
+        private static UserManager<ApplicationUser> _userManager;
+        private static string _userId;
+        private static ApplicationUser _user;
 
-        public static void SetHttpContextAccessor(IHttpContextAccessor httpContextAccessor)
+        public static async Task SetHttpContextAccessor(IHttpContextAccessor httpContextAccessor, UserManager<ApplicationUser> userManager)
         {
             _httpContextAccessor = httpContextAccessor;
+            _userManager = userManager;
+            _userId = httpContextAccessor?.HttpContext.User?.FindFirst(ClaimTypes.NameIdentifier).Value;
+            _user = _userId.IsNotNullOrEmpty() ? await _userManager.FindByIdAsync(_userId) : null;
+
+
         }
         public static string CurrentUserId
         {
             get
             {
-                return _httpContextAccessor.HttpContext.User?.FindFirst(ClaimTypes.NameIdentifier).Value;
+                return _userId;
             }
         }
 
@@ -25,12 +35,7 @@ namespace TaskScheduler.Core.Application
         {
             get
             {
-                ApplicationUser user = null;
-                if(CurrentUserId != null)
-                {
-                    //todo
-                }
-                return user;
+                return _user;
             }
         }
 
@@ -40,7 +45,7 @@ namespace TaskScheduler.Core.Application
         { 
             get 
             {
-                return "09Ujdljud-09kdkn-oujdm";
+                return _user.UserName;
             } 
         }
 
@@ -48,7 +53,7 @@ namespace TaskScheduler.Core.Application
         {
             get
             {
-                return "09Ujdljud-09kdkn-oujdm";
+                return _user.BusinessId;
             }
         }
     

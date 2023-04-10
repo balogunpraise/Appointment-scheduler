@@ -1,6 +1,11 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using TaskScheduler.Api;
 using TaskScheduler.Api.Startup;
 using TaskScheduler.Core.Application;
+using TaskScheduler.Core.Entities;
 using TaskScheduler.Infrastructure.Data;
+using TaskScheduler.Infrastructure.Data.Repositories;
 using TaskScheduler.Infrastructure.Data.Repositories.Abstractions;
 using TaskScheduler.Infrastructure.Data.Repositories.Implementations;
 
@@ -13,6 +18,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddIdentityService(builder.Configuration);
+var connectionString = builder.Configuration.GetConnectionString("MySqlConnection");
+builder.Services.AddDbContext<EfContext>(option => option.UseMySql(connectionString, serverVersion: ServerVersion.AutoDetect(connectionString)));
 builder.Host.ConfigureEnvironment();
 builder.Services.AddScoped<IScheduleRepository, ScheduleRepository>();
 builder.Services.AddSingleton<DapperContext>();
@@ -20,13 +28,18 @@ builder.Services.AddSingleton<DapperContext>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-var httpcontext = new HttpContextAccessor();
+var scopeFactory = app.Services.GetRequiredService<IServiceScopeFactory>();
+using(var scope = scopeFactory.CreateScope())
+{
+    var httpContext = scope.ServiceProvider.GetRequiredService<IHttpContextAccessor>();
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+    Current.SetHttpContextAccessor(httpContext, userManager).Wait();
+}
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-Current.SetHttpContextAccessor(httpcontext);
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

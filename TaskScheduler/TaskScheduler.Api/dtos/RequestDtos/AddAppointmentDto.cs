@@ -1,6 +1,6 @@
 ﻿using TaskScheduler.Core.Entities;
 
-namespace TaskScheduler.Api.dtos
+namespace TaskScheduler.Api.dtos.RequestDtos
 {
     public class AddAppointmentDto
     {

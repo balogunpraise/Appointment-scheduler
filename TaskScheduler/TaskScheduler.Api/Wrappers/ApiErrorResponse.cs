@@ -5,10 +5,10 @@
         private readonly int _statusCode;
         public string Message { get; set; }
 
-        public ApiErrorResponse(int statusCode)
+        public ApiErrorResponse(int statusCode, string message = null)
         {
             _statusCode = statusCode;
-            Message = GetApiResponseMessage(_statusCode);
+            Message = message ?? GetApiResponseMessage(_statusCode);
         }
 
         private static string GetApiResponseMessage(int statusCode)
