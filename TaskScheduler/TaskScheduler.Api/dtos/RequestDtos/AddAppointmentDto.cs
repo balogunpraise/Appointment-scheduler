@@ -13,6 +13,6 @@ namespace TaskScheduler.Api.dtos.RequestDtos
         public bool IsDepricatied { get; set; }
         public decimal Price { get; set; }
         public string ClientId { get; set; }
-        public Client Client { get; set; }
+        //public Client Client { get; set; }
     }
 }

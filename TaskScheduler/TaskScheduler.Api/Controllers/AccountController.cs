@@ -9,6 +9,8 @@ using TaskScheduler.Infrastructure;
 
 namespace TaskScheduler.Api.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -47,12 +49,13 @@ namespace TaskScheduler.Api.Controllers
             }
         }
 
+        [HttpPost("signin")]
         public async Task<ActionResult> LoginAsync(SigninDto signinDto)
         {
             try
             {
                 var user = await _userManager.FindByEmailAsync(signinDto.EmailOrUsername);
-                if (user != null) return Unauthorized(new ApiErrorResponse(401));
+                if (user == null) return Unauthorized(new ApiErrorResponse(401));
                 await _signInManager.CheckPasswordSignInAsync(user, signinDto.Password, false);
                 var token = new TokenService(_config);
                 var loginResponse = new LoginResponseDto { Token = token.GenerateToken(user) };

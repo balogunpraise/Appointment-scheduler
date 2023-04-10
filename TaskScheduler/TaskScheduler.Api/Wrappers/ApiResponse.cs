@@ -15,7 +15,7 @@
 
     public class ApiResponse<T> : ApiResponse
     {
-        public T Data;
+        public T Data { get; set; }
 
         public ApiResponse(T data, int statusCode, string message) : base(statusCode, message)
         {

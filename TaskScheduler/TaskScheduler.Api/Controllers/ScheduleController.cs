@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System.Web;
+﻿using Microsoft.AspNetCore.Mvc;
 using TaskScheduler.Api.Wrappers;
 using TaskScheduler.Core.Entities;
 using TaskScheduler.Infrastructure.Data.Repositories.Abstractions;
@@ -17,11 +15,18 @@ namespace TaskScheduler.Api.Controllers
         {
             _scheduleRepository = scheduleRepository;
         }
-        [HttpGet]
+        [HttpGet(Name = "appointmnets")]
         public async Task<ActionResult<IEnumerable<Appointment>>> GetAllAppointments()
         {
             var appointments = await _scheduleRepository.GetAppointments();
             return Ok(new ApiResponse<IEnumerable<Appointment>>(appointments, 200, "Succeeded"));
         }
+
+        /*public async Task<Appointment> GetAppointmentById(string id)
+        {
+            
+        }*/
+
+        
     }
 }

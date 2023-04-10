@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TaskScheduler.Api;
 using TaskScheduler.Api.Startup;
-using TaskScheduler.Core.Application;
 using TaskScheduler.Core.Entities;
 using TaskScheduler.Infrastructure.Data;
 using TaskScheduler.Infrastructure.Data.Repositories;
@@ -40,7 +39,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

@@ -11,7 +11,7 @@ using TaskScheduler.Infrastructure.Data.Repositories;
 namespace TaskScheduler.Infrastructure.Migrations
 {
     [DbContext(typeof(EfContext))]
-    [Migration("20230410000858_InitialMigration")]
+    [Migration("20230410201135_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -170,6 +170,12 @@ namespace TaskScheduler.Infrastructure.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("longtext");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("tinyint(1)");
